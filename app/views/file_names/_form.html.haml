@@ -1,0 +1,9 @@
+= simple_form_for(@file_name) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :storage
+
+  .form-actions
+    = f.button :submit
