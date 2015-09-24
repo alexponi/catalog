@@ -39,32 +39,44 @@ ActiveRecord::Schema.define(version: 20150923210736) do
   end
 
   create_table "thing_files", force: :cascade do |t|
-    t.string   "thing_id",   limit: 255
-    t.string   "file_id",    limit: 255
+    t.integer  "thing_id",     limit: 4
+    t.integer  "file_name_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "thing_files", ["file_name_id"], name: "index_thing_files_on_file_name_id", using: :btree
+  add_index "thing_files", ["thing_id"], name: "index_thing_files_on_thing_id", using: :btree
 
   create_table "thing_links", force: :cascade do |t|
-    t.string   "thing_id",   limit: 255
-    t.string   "link_id",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "thing_id",   limit: 4
+    t.integer  "link_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "thing_links", ["link_id"], name: "index_thing_links_on_link_id", using: :btree
+  add_index "thing_links", ["thing_id"], name: "index_thing_links_on_thing_id", using: :btree
 
   create_table "thing_locations", force: :cascade do |t|
-    t.string   "thing_id",    limit: 255
-    t.string   "location_id", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "thing_id",    limit: 4
+    t.integer  "location_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
+  add_index "thing_locations", ["location_id"], name: "index_thing_locations_on_location_id", using: :btree
+  add_index "thing_locations", ["thing_id"], name: "index_thing_locations_on_thing_id", using: :btree
+
   create_table "thing_tags", force: :cascade do |t|
-    t.string   "thing_id",   limit: 255
-    t.string   "tag_id",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "thing_id",   limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "thing_tags", ["tag_id"], name: "index_thing_tags_on_tag_id", using: :btree
+  add_index "thing_tags", ["thing_id"], name: "index_thing_tags_on_thing_id", using: :btree
 
   create_table "things", force: :cascade do |t|
     t.string   "name",        limit: 255
