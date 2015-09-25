@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :texts
   resources :links
   resources :file_names
   resources :locations

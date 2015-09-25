@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923210736) do
+ActiveRecord::Schema.define(version: 20150925183502) do
 
   create_table "file_names", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20150923210736) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "texts", force: :cascade do |t|
+    t.string   "text",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -77,6 +83,16 @@ ActiveRecord::Schema.define(version: 20150923210736) do
 
   add_index "thing_tags", ["tag_id"], name: "index_thing_tags_on_tag_id", using: :btree
   add_index "thing_tags", ["thing_id"], name: "index_thing_tags_on_thing_id", using: :btree
+
+  create_table "thing_texts", force: :cascade do |t|
+    t.integer  "thing_id",   limit: 4
+    t.integer  "text_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "thing_texts", ["text_id"], name: "index_thing_texts_on_text_id", using: :btree
+  add_index "thing_texts", ["thing_id"], name: "index_thing_texts_on_thing_id", using: :btree
 
   create_table "things", force: :cascade do |t|
     t.string   "name",        limit: 255

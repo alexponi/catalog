@@ -7,4 +7,6 @@ class Thing < ActiveRecord::Base
   has_many :file_names, through: :thing_files
   has_many :thing_links
   has_many :link, through: :thing_links
+  has_many :thing_texts
+  has_many :texts, through: :thing_texts
 end
