@@ -1,20 +1,10 @@
 Catalog
 ================
+This application it is not only codelibrary, it is a universal catalog.
+This application I am writing to reduce the time searching for the right things to me. When I say a thing, I mean a piece of software code and tools in the home workshop and favorite music and food in the kitchen.
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+In the initial stage this application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
-
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
-
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
 
 Ruby on Rails
 -------------
