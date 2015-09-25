@@ -36,3 +36,7 @@ Credits
 
 License
 -------
+
+Copyright
+-------
+Copyright (c) 2015 Alexander Ponikarovsky
