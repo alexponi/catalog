@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :things
   mount Upmin::Engine => '/admin'
-  root to: 'visitors#index'
+  root to: 'things#index'
   devise_for :users
   resources :users
 end
