@@ -1,0 +1,5 @@
+- if user_signed_in?
+  %h4 Welcome #{current_user.email}
+  = link_to 'New Thing', new_thing_path
+- else
+  %h1 Welcome
