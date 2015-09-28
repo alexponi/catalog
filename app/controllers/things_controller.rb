@@ -1,5 +1,5 @@
 class ThingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
 
   # GET /things

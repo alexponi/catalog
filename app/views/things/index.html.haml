@@ -1,26 +1,24 @@
-- if user_signed_in?
-  %h1 Listing things
+%h1 Listing things
 
-  %table
-    %thead
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @things.each do |thing|
       %tr
-        %th Name
-        %th Description
-        %th
-        %th
-        %th
+        %td= thing.name
+        %td= thing.description
+        %td= link_to 'Show', thing
+        %td= link_to 'Edit', edit_thing_path(thing)
+        %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-    %tbody
-      - @things.each do |thing|
-        %tr
-          %td= thing.name
-          %td= thing.description
-          %td= link_to 'Show', thing
-          %td= link_to 'Edit', edit_thing_path(thing)
-          %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
 
-  %br
+= link_to 'New Thing', new_thing_path
 
-  = link_to 'New Thing', new_thing_path
-- else
-  %h1 Welcome
