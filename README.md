@@ -1,5 +1,7 @@
 Catalog ![catalog logo](ap-catalog.png)
 ================
+Sorry, the work is not finished yet.
+
 This application it is not only codelibrary, it is a universal catalog.
 This application I am writing to reduce the time searching for the right things to me. When I say a thing, I mean a piece of software code and tools in the home workshop and favorite music and food in the kitchen.
 
