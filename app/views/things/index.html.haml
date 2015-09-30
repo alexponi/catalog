@@ -1,10 +1,10 @@
-%h1 Listing things
-
-%table
+%h1 Things
+%br
+%table{:style=>"width: 80%"}
   %thead
     %tr
+      %th id
       %th Name
-      %th Description
       %th
       %th
       %th
@@ -12,8 +12,8 @@
   %tbody
     - @things.each do |thing|
       %tr
+        %td= thing.id
         %td= thing.name
-        %td= thing.description
         %td= link_to 'Show', thing
         %td= link_to 'Edit', edit_thing_path(thing)
         %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }
