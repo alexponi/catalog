@@ -9,4 +9,12 @@ class Thing < ActiveRecord::Base
   has_many :link, through: :thing_links
   has_many :thing_texts
   has_many :texts, through: :thing_texts
+
+  def self.search(search)
+    if search
+      self.where(:name => "%#{search}%").to_a
+    else
+      self.all
+    end
+  end
 end
