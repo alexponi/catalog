@@ -11,8 +11,8 @@ class Thing < ActiveRecord::Base
   has_many :texts, through: :thing_texts
 
   def self.search(search)
-    if search
-      self.where(:name => "%#{search}%").to_a
+    if search != ""
+      self.where(:name => "#{search}").to_a
     else
       self.all
     end
