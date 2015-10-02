@@ -3,7 +3,9 @@
   %br
   = form_tag things_path, :method => 'get' do
     %p
-    = text_field_tag :search, params[:search]
+    = text_field_tag :name
+    = text_field_tag :feature
+    = text_field_tag :abbreviation
     = submit_tag "Search", :name => nil
   %br
   %br

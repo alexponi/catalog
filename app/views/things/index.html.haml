@@ -5,6 +5,8 @@
     %tr
       %th id
       %th Name
+      %th Feature
+      %th Abbreviation
       %th
       %th
       %th
@@ -14,6 +16,8 @@
       %tr
         %td= thing.id
         %td= thing.name
+        %td= thing.feature
+        %td= thing.abbreviation
         %td= link_to 'Show', thing
         %td= link_to 'Edit', edit_thing_path(thing)
         %td= link_to 'Destroy', thing, :method => :delete, :data => { :confirm => 'Are you sure?' }

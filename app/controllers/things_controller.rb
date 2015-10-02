@@ -5,7 +5,7 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.search(params[:search])
+    @things = Thing.search(params[:name], params[:feature], params[:abbreviation])
   end
 
   # GET /things/1
@@ -70,6 +70,6 @@ class ThingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thing_params
-      params.require(:thing).permit(:name, :description)
+      params.require(:thing).permit(:name, :feature, :abbreviation, :description)
     end
 end

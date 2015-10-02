@@ -10,9 +10,21 @@ class Thing < ActiveRecord::Base
   has_many :thing_texts
   has_many :texts, through: :thing_texts
 
-  def self.search(search)
-    if search != ""
-      self.where(:name => "#{search}").to_a
+  def self.search(name, feature, abbreviation)
+    if name != "" and feature != "" and abbreviation != ""
+      self.where(:name => "#{name}", :feature => "#{feature}", :abbreviation => "#{abbreviation}").to_a
+    elsif name != "" and feature != "" and abbreviation = ""
+      self.where(:name => "#{name}", :feature => "#{feature}").to_a
+    elsif name != "" and feature = "" and abbreviation != ""
+      self.where(:name => "#{name}", :abbreviation => "#{abbreviation}").to_a
+    elsif name = "" and feature != "" and abbreviation != ""
+      self.where(:feature => "#{feature}", :abbreviation => "#{abbreviation}").to_a
+    elsif name != "" and feature = "" and abbreviation = ""
+      self.where(:name => "#{name}").to_a
+    elsif name = "" and feature != "" and abbreviation = ""
+      self.where(:feature => "#{feature}").to_a
+    elsif name = "" and feature = "" and abbreviation != ""
+      self.where(:abbreviation => "#{abbreviation}").to_a
     else
       self.all
     end
