@@ -1,4 +1,4 @@
 class ThingFile < ActiveRecord::Base
-  belongs_to :things
-  belongs_to :file_names
+  belongs_to :thing
+  belongs_to :file_name
 end

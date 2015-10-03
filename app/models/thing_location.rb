@@ -1,5 +1,5 @@
 class ThingLocation < ActiveRecord::Base
-  belongs_to :things
-  belongs_to :locations
+  belongs_to :thing
+  belongs_to :location
 
 end

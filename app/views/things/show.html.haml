@@ -1,11 +1,41 @@
 %p#notice= notice
 
 %p
+  %b Tags:
+  - @thing.tags.each do |tag|
+    = tag.name
+%p
   %b Name:
   = @thing.name
 %p
+  %b Feature:
+  = @thing.feature
+%p
+  %b Abbreviation:
+  = @thing.abbreviation
+%p
   %b Description:
   = @thing.description
+%p
+  %b Text:
+  - @thing.texts.each do |text|
+    %br
+    = text.text
+%p
+  %b Location:
+  - @thing.locations.each do |location|
+    %br
+    = location.name
+%p
+  %b File:
+  - @thing.file_names.each do |file|
+    %br
+    = file.name
+%p
+  %b Link:
+  - @thing.links.each do |link|
+    %br
+    = link.name
 
 = link_to 'Edit', edit_thing_path(@thing)
 \|
