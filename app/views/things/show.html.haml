@@ -4,6 +4,11 @@
   %b Tags:
   - @thing.tags.each do |tag|
     = tag.name
+
+= link_to 'Add tag', new_tag_path(@thing)
+
+%br
+%br
 %p
   %b Name:
   = @thing.name
@@ -21,21 +26,38 @@
   - @thing.texts.each do |text|
     %br
     = text.text
+
+= link_to 'Add text', new_text_path(@thing) 
+%br
+%br
 %p
   %b Location:
   - @thing.locations.each do |location|
     %br
     = location.name
+
+= link_to 'Add location', new_location_path(@thing)
+%br
+%br
 %p
   %b File:
   - @thing.file_names.each do |file|
     %br
     = file.name
+
+= link_to 'Add file', new_file_name_path(@thing)
+%br
+%br
 %p
   %b Link:
   - @thing.links.each do |link|
     %br
     = link.name
+
+= link_to 'Add link', new_link_path(@thing)
+
+%br
+%br
 
 = link_to 'Edit', edit_thing_path(@thing)
 \|
