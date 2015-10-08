@@ -30,8 +30,10 @@ class FileNamesController < ApplicationController
 
     respond_to do |format|
       if @file_name.save
-        format.html { redirect_to @file_name, notice: 'File name was successfully created.' }
-        format.json { render :show, status: :created, location: @file_name }
+        @thing = Thing.find(params[:thing_id])
+        ThingFile.create(thing_id: params[:thing_id], file_name_id: @file_name.id)
+        format.html { redirect_to @thing, notice: 'File name was successfully created.' }
+        format.json { render :show, status: :created, location: @thing }
       else
         format.html { render :new }
         format.json { render json: @file_name.errors, status: :unprocessable_entity }

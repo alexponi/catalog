@@ -1,4 +1,4 @@
-= simple_form_for(@file_name) do |f|
+= simple_form_for @file_name, url: "/file_names?thing_id=#{@thing.id}" do |f|
   = f.error_notification
 
   .form-inputs
