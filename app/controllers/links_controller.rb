@@ -16,6 +16,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /links/1/edit

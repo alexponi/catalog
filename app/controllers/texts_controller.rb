@@ -16,6 +16,7 @@ class TextsController < ApplicationController
   # GET /texts/new
   def new
     @text = Text.new
+    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /texts/1/edit

@@ -1,8 +1,6 @@
-= simple_form_for(@tag) do |f|
+= simple_form_for @tag do |f|
   = f.error_notification
-
   .form-inputs
     = f.input :name
-
   .form-actions
     = f.button :submit

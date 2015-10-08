@@ -5,7 +5,7 @@
   - @thing.tags.each do |tag|
     = tag.name
 
-= link_to 'Add tag', new_tag_path(@thing)
+= link_to 'Add tag', new_tag_path(thing_id: params[:id])
 
 %br
 %br
@@ -27,7 +27,7 @@
     %br
     = text.text
 
-= link_to 'Add text', new_text_path(@thing) 
+= link_to 'Add text', new_text_path(thing_id: params[:id]) 
 %br
 %br
 %p
@@ -36,7 +36,7 @@
     %br
     = location.name
 
-= link_to 'Add location', new_location_path(@thing)
+= link_to 'Add location', new_location_path(thing_id: params[:id])
 %br
 %br
 %p
@@ -45,7 +45,7 @@
     %br
     = file.name
 
-= link_to 'Add file', new_file_name_path(@thing)
+= link_to 'Add file', new_file_name_path(thing_id: params[:id])
 %br
 %br
 %p
@@ -54,7 +54,7 @@
     %br
     = link.name
 
-= link_to 'Add link', new_link_path(@thing)
+= link_to 'Add link', new_link_path(thing_id: params[:id])
 
 %br
 %br

@@ -16,6 +16,7 @@ class TagsController < ApplicationController
   # GET /tags/new
   def new
     @tag = Tag.new
+    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /tags/1/edit
@@ -29,8 +30,10 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
+        @thing = Thing.find(params[:thing_id])
+        ThingTag.create(thing_id: params[:thing_id], tag_id: @tag.id)
+        format.html { redirect_to @thing, notice: 'Tag was successfully created.' }
+        format.json { render :show, status: :created, location: @thing }
       else
         format.html { render :new }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
@@ -68,8 +71,20 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 
+    def set_thing
+      @thing = Thing.find(params[:thing_id])
+    end
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:name)
     end
+
+=begin
+    def thing_tag_params
+      params.require(:thing_tag).permit(thing_id: params[:thing_id], :tag_id)
+    end
+=end
+
 end

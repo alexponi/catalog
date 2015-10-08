@@ -16,6 +16,7 @@ class FileNamesController < ApplicationController
   # GET /file_names/new
   def new
     @file_name = FileName.new
+    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /file_names/1/edit
