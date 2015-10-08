@@ -30,8 +30,10 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
+        @thing = Thing.find(params[:thing_id])
+        ThingLocation.create(thing_id: params[:thing_id], location_id: @location.id)
+        format.html { redirect_to @thing, notice: 'Location was successfully created.' }
+        format.json { render :show, status: :created, location: @thing }
       else
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }

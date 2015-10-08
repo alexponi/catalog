@@ -30,7 +30,9 @@ class TextsController < ApplicationController
 
     respond_to do |format|
       if @text.save
-        format.html { redirect_to @text, notice: 'Text was successfully created.' }
+        @thing = Thing.find(params[:thing_id])
+        ThingText.create(thing_id: params[:thing_id], text_id: @text.id)
+        format.html { redirect_to @thing, notice: 'Text was successfully created.' }
         format.json { render :show, status: :created, location: @text }
       else
         format.html { render :new }

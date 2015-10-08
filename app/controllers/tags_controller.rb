@@ -71,20 +71,9 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 
-    def set_thing
-      @thing = Thing.find(params[:thing_id])
-    end
-
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:name)
     end
-
-=begin
-    def thing_tag_params
-      params.require(:thing_tag).permit(thing_id: params[:thing_id], :tag_id)
-    end
-=end
 
 end

@@ -1,4 +1,4 @@
-= simple_form_for(@text) do |f|
+= simple_form_for @text, url: "/texts?thing_id=#{@thing.id}" do |f|
   = f.error_notification
 
   .form-inputs
