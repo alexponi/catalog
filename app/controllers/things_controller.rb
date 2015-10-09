@@ -5,11 +5,13 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
+    @current_user = current_user if current_user
     if params[:name] || params[:feature] || params[:abbreviation]
-      @things = Thing.search(params[:name], params[:feature], params[:abbreviation])
+      things = Thing.where(user_id: @current_user.id)
+       @things = things.search(params[:name], params[:feature], params[:abbreviation])
     else
-      @things = Thing.all
-    end 
+      @things = Thing.where(user_id: @current_user.id)
+    end
   end
 
 
