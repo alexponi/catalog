@@ -48,7 +48,9 @@
   %b File:
   - @thing.file_names.each do |file|
     %br
-    = file.storage + file.name
+    = file.storage + "/" + file.name
+    = link_to 'x', "/file_names/#{file.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 
 = link_to 'Add file', new_file_name_path(thing_id: params[:id])
 %br

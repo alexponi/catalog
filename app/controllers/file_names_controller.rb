@@ -58,9 +58,10 @@ class FileNamesController < ApplicationController
   # DELETE /file_names/1
   # DELETE /file_names/1.json
   def destroy
+    @thing = Thing.find(params[:thing_id])
     @file_name.destroy
     respond_to do |format|
-      format.html { redirect_to file_names_url, notice: 'File name was successfully destroyed.' }
+      format.html { redirect_to @thing, notice: 'File name was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
