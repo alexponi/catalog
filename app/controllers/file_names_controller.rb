@@ -1,27 +1,15 @@
 class FileNamesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_file_name, only: [:show, :edit, :update, :destroy]
-
-  # GET /file_names
-  # GET /file_names.json
-  def index
-    @file_names = FileName.all
-  end
-
-  # GET /file_names/1
-  # GET /file_names/1.json
-  def show
-  end
+  before_action :set_file_name, only: [:edit, :update, :destroy]
+  before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /file_names/new
   def new
     @file_name = FileName.new
-    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /file_names/1/edit
   def edit
-    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /file_names
@@ -31,7 +19,6 @@ class FileNamesController < ApplicationController
 
     respond_to do |format|
       if @file_name.save
-        @thing = Thing.find(params[:thing_id])
         ThingFile.create(thing_id: params[:thing_id], file_name_id: @file_name.id)
         format.html { redirect_to @thing, notice: 'File name was successfully created.' }
         format.json { render :show, status: :created, location: @thing }
@@ -45,7 +32,6 @@ class FileNamesController < ApplicationController
   # PATCH/PUT /file_names/1
   # PATCH/PUT /file_names/1.json
   def update
-    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @file_name.update(file_name_params)
         format.html { redirect_to @thing, notice: 'File name was successfully updated.' }
@@ -60,7 +46,6 @@ class FileNamesController < ApplicationController
   # DELETE /file_names/1
   # DELETE /file_names/1.json
   def destroy
-    @thing = Thing.find(params[:thing_id])
     @file_name.destroy
     respond_to do |format|
       format.html { redirect_to @thing, notice: 'File name was successfully destroyed.' }
@@ -72,6 +57,10 @@ class FileNamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_file_name
       @file_name = FileName.find(params[:id])
+    end
+
+    def set_thing
+      @thing = Thing.find(params[:thing_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

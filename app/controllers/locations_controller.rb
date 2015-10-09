@@ -1,37 +1,24 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
-
-  # GET /locations
-  # GET /locations.json
-  def index
-    @locations = Location.all
-  end
-
-  # GET /locations/1
-  # GET /locations/1.json
-  def show
-  end
+  before_action :set_location, only: [:edit, :update, :destroy]
+  before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /locations/new
   def new
     @location = Location.new
-    @thing = Thing.find(params[:thing_id])
   end
 
   # GET /locations/1/edit
   def edit
-    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /locations
   # POST /locations.json
   def create
     @location = Location.new(location_params)
-
+    
     respond_to do |format|
       if @location.save
-        @thing = Thing.find(params[:thing_id])
         ThingLocation.create(thing_id: params[:thing_id], location_id: @location.id)
         format.html { redirect_to @thing, notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @thing }
@@ -45,7 +32,6 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
-    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @thing, notice: 'Location was successfully updated.' }
@@ -60,7 +46,6 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
-    @thing = Thing.find(params[:thing_id])
     @location.destroy
     respond_to do |format|
       format.html { redirect_to @thing, notice: 'Location was successfully destroyed.' }
@@ -72,6 +57,10 @@ class LocationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_location
       @location = Location.find(params[:id])
+    end
+
+    def set_thing
+      @thing = Thing.find(params[:thing_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
