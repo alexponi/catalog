@@ -5,8 +5,13 @@ class ThingsController < ApplicationController
   # GET /things
   # GET /things.json
   def index
-    @things = Thing.search(params[:name], params[:feature], params[:abbreviation])
+    if params[:name] || params[:feature] || params[:abbreviation]
+      @things = Thing.search(params[:name], params[:feature], params[:abbreviation])
+    else
+      @things = Thing.all
+    end 
   end
+
 
   # GET /things/1
   # GET /things/1.json
