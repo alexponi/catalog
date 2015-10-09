@@ -55,6 +55,9 @@
   - @thing.file_names.each do |file|
     %br
     = file.storage + "/" + file.name
+    = " | "
+    = link_to 'Edit', "/file_names/#{file.id}/edit?thing_id=#{@thing.id}"
+    = " | "
     = link_to 'x', "/file_names/#{file.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 

@@ -1,6 +1,14 @@
 %h1 Editing file_name
 
-= render 'form'
+= simple_form_for @file_name, url: "/file_names/#{@file_name.id}?thing_id=#{@thing.id}" do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :storage
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Show', @file_name
 \|

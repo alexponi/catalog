@@ -21,6 +21,7 @@ class FileNamesController < ApplicationController
 
   # GET /file_names/1/edit
   def edit
+    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /file_names
@@ -44,10 +45,11 @@ class FileNamesController < ApplicationController
   # PATCH/PUT /file_names/1
   # PATCH/PUT /file_names/1.json
   def update
+    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @file_name.update(file_name_params)
-        format.html { redirect_to @file_name, notice: 'File name was successfully updated.' }
-        format.json { render :show, status: :ok, location: @file_name }
+        format.html { redirect_to @thing, notice: 'File name was successfully updated.' }
+        format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
         format.json { render json: @file_name.errors, status: :unprocessable_entity }
