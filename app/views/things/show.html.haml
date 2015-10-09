@@ -28,6 +28,8 @@
   - @thing.texts.each do |text|
     %br
     = text.text
+    = link_to 'x', "/texts/#{text.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %br
 
 = link_to 'Add text', new_text_path(thing_id: params[:id]) 
 %br

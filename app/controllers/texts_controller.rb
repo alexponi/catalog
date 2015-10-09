@@ -58,9 +58,10 @@ class TextsController < ApplicationController
   # DELETE /texts/1
   # DELETE /texts/1.json
   def destroy
+    @thing = Thing.find(params[:thing_id])
     @text.destroy
     respond_to do |format|
-      format.html { redirect_to texts_url, notice: 'Text was successfully destroyed.' }
+      format.html { redirect_to @thing, notice: 'Text was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
