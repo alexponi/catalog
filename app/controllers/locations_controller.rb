@@ -21,6 +21,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /locations
@@ -44,10 +45,11 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { render :show, status: :ok, location: @location }
+        format.html { redirect_to @thing, notice: 'Location was successfully updated.' }
+        format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
         format.json { render json: @location.errors, status: :unprocessable_entity }
