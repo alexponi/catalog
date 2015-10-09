@@ -1,5 +1,11 @@
 %p#notice= notice
-
+%h4
+  = @thing.name.mb_chars.capitalize.to_s
+  = @thing.feature
+  = @thing.abbreviation
+%p
+  %b Description:
+  = @thing.description
 %p
   %b Tags:
   - @thing.tags.each do |tag|
@@ -13,19 +19,6 @@
       = " | "
   %small
     = link_to 'Add tag', new_tag_path(thing_id: params[:id])
-
-%p
-  %b Name:
-  = @thing.name
-%p
-  %b Feature:
-  = @thing.feature
-%p
-  %b Abbreviation:
-  = @thing.abbreviation
-%p
-  %b Description:
-  = @thing.description
 %p
   %b Text:
   - @thing.texts.each do |text|
