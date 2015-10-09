@@ -4,6 +4,8 @@
   %b Tags:
   - @thing.tags.each do |tag|
     = tag.name
+    = link_to 'x', "/tags/#{tag.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = " | "
 
 = link_to 'Add tag', new_tag_path(thing_id: params[:id])
 
