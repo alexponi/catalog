@@ -58,9 +58,10 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    @thing = Thing.find(params[:thing_id])
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to @thing, notice: 'Link was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
