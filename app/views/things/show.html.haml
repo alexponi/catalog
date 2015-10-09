@@ -39,6 +39,7 @@
   - @thing.locations.each do |location|
     %br
     = location.name
+    = link_to 'x', "/locations/#{location.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'Add location', new_location_path(thing_id: params[:id])
 %br
