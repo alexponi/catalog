@@ -21,6 +21,7 @@ class LinksController < ApplicationController
 
   # GET /links/1/edit
   def edit
+    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /links
@@ -44,10 +45,11 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link, notice: 'Link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @link }
+        format.html { redirect_to @thing, notice: 'Link was successfully updated.' }
+        format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
         format.json { render json: @link.errors, status: :unprocessable_entity }

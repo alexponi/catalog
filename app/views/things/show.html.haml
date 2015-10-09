@@ -69,6 +69,9 @@
   - @thing.links.each do |link|
     %br
     = link.name
+    = " | "
+    = link_to 'Edit', "/links/#{link.id}/edit?thing_id=#{@thing.id}"
+    = " | "
     = link_to 'x', "/links/#{link.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'Add link', new_link_path(thing_id: params[:id])
