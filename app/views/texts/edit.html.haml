@@ -1,6 +1,13 @@
 %h1 Editing text
 
-= render 'form'
+= simple_form_for @text, url: "/texts/#{@text.id}?thing_id=#{@thing.id}" do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :text
+
+  .form-actions
+    = f.button :submit
 
 = link_to 'Show', @text
 \|

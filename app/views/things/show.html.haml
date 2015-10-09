@@ -28,6 +28,9 @@
   - @thing.texts.each do |text|
     %br
     = text.text
+    = " | "
+    = link_to 'Edit', "/texts/#{text.id}/edit?thing_id=#{@thing.id}"
+    = " | "
     = link_to 'x', "/texts/#{text.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
     %br
 

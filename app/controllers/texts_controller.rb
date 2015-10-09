@@ -21,6 +21,7 @@ class TextsController < ApplicationController
 
   # GET /texts/1/edit
   def edit
+    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /texts
@@ -44,10 +45,11 @@ class TextsController < ApplicationController
   # PATCH/PUT /texts/1
   # PATCH/PUT /texts/1.json
   def update
+    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @text.update(text_params)
-        format.html { redirect_to @text, notice: 'Text was successfully updated.' }
-        format.json { render :show, status: :ok, location: @text }
+        format.html { redirect_to @thing, notice: 'Text was successfully updated.' }
+        format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
         format.json { render json: @text.errors, status: :unprocessable_entity }
