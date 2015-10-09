@@ -22,6 +22,8 @@ gem 'mysql2', '~> 0.3.18'
 gem 'simple_form'
 gem 'thin'
 gem 'upmin-admin'
+gem 'ckeditor'
+gem 'paperclip'
 group :development do
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'
