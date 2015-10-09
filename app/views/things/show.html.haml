@@ -4,13 +4,16 @@
   %b Tags:
   - @thing.tags.each do |tag|
     = tag.name
-    = link_to 'x', "/tags/#{tag.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
-    = " | "
+    %small
+      = " | "
+    
+      = link_to 'Edit', "/tags/#{tag.id}/edit?thing_id=#{@thing.id}"
+      = " | "
+      = link_to 'x', "/tags/#{tag.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = " | "
+  %small
+    = link_to 'Add tag', new_tag_path(thing_id: params[:id])
 
-= link_to 'Add tag', new_tag_path(thing_id: params[:id])
-
-%br
-%br
 %p
   %b Name:
   = @thing.name
@@ -28,56 +31,57 @@
   - @thing.texts.each do |text|
     %br
     = text.text
-    = " | "
-    = link_to 'Edit', "/texts/#{text.id}/edit?thing_id=#{@thing.id}"
-    = " | "
-    = link_to 'x', "/texts/#{text.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
-    %br
+    %small
+      = " | "
+      = link_to 'Edit', "/texts/#{text.id}/edit?thing_id=#{@thing.id}"
+      = " | "
+      = link_to 'x', "/texts/#{text.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = " | "
+  %small
+    = link_to 'Add text', new_text_path(thing_id: params[:id]) 
 
-= link_to 'Add text', new_text_path(thing_id: params[:id]) 
-%br
-%br
 %p
   %b Location:
   - @thing.locations.each do |location|
     %br
     = location.name
-    = " | "
-    = link_to 'Edit', "/locations/#{location.id}/edit?thing_id=#{@thing.id}"
-    = " | "
-    = link_to 'x', "/locations/#{location.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %small
+      = " | "
+      = link_to 'Edit', "/locations/#{location.id}/edit?thing_id=#{@thing.id}"
+      = " | "
+      = link_to 'x', "/locations/#{location.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = " | "
+  %small
+    = link_to 'Add location', new_location_path(thing_id: params[:id])
 
-= link_to 'Add location', new_location_path(thing_id: params[:id])
-%br
-%br
 %p
   %b File:
   - @thing.file_names.each do |file|
     %br
     = file.storage + "/" + file.name
-    = " | "
-    = link_to 'Edit', "/file_names/#{file.id}/edit?thing_id=#{@thing.id}"
-    = " | "
-    = link_to 'x', "/file_names/#{file.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %small
+      = " | "
+      = link_to 'Edit', "/file_names/#{file.id}/edit?thing_id=#{@thing.id}"
+      = " | "
+      = link_to 'x', "/file_names/#{file.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = " | "
+  %small
+    = link_to 'Add file', new_file_name_path(thing_id: params[:id])
 
-
-= link_to 'Add file', new_file_name_path(thing_id: params[:id])
-%br
-%br
 %p
   %b Link:
   - @thing.links.each do |link|
     %br
     = link.name
-    = " | "
-    = link_to 'Edit', "/links/#{link.id}/edit?thing_id=#{@thing.id}"
-    = " | "
-    = link_to 'x', "/links/#{link.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %small
+      = " | "
+      = link_to 'Edit', "/links/#{link.id}/edit?thing_id=#{@thing.id}"
+      = " | "
+      = link_to 'x', "/links/#{link.id}?thing_id=#{@thing.id}", :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = " | "
+  %small
+    = link_to 'Add link', new_link_path(thing_id: params[:id])
 
-= link_to 'Add link', new_link_path(thing_id: params[:id])
-
-%br
-%br
 
 = link_to 'Edit', edit_thing_path(@thing)
 \|

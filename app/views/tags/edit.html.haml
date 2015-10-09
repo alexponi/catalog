@@ -1,6 +1,11 @@
 %h1 Editing tag
 
-= render 'form'
+= simple_form_for @tag, url: "/tags/#{@tag.id}?thing_id=#{@thing.id}" do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+  .form-actions
+    = f.button :submit
 
 %br
 = link_to 'Back', @thing

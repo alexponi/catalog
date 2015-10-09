@@ -21,6 +21,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1/edit
   def edit
+    @thing = Thing.find(params[:thing_id])
   end
 
   # POST /tags
@@ -44,10 +45,11 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
+    @thing = Thing.find(params[:thing_id])
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tag }
+        format.html { redirect_to @thing, notice: 'Tag was successfully updated.' }
+        format.json { render :show, status: :ok, location: @thing }
       else
         format.html { render :edit }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
