@@ -2,8 +2,6 @@ class ThingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
 
-  # GET /things
-  # GET /things.json
   def index
     @current_user = current_user if current_user
     if params[:name] || params[:feature] || params[:abbreviation]
@@ -14,25 +12,16 @@ class ThingsController < ApplicationController
     end
   end
 
-
-  # GET /things/1
-  # GET /things/1.json
   def show
   end
 
-  # GET /things/new
   def new
     @thing = Thing.new
-    # @current_user = current_user
-    # @user_id = @current_user.id
   end
 
-  # GET /things/1/edit
   def edit
   end
 
-  # POST /things
-  # POST /things.json
   def create
     @thing = Thing.new(thing_params)
 
@@ -47,8 +36,6 @@ class ThingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /things/1
-  # PATCH/PUT /things/1.json
   def update
     respond_to do |format|
       if @thing.update(thing_params)
@@ -61,8 +48,6 @@ class ThingsController < ApplicationController
     end
   end
 
-  # DELETE /things/1
-  # DELETE /things/1.json
   def destroy
     @thing.destroy
     respond_to do |format|

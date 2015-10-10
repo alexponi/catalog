@@ -3,17 +3,13 @@ class TextsController < ApplicationController
   before_action :set_text, only: [:edit, :update, :destroy]
   before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
 
-  # GET /texts/new
   def new
     @text = Text.new
   end
 
-  # GET /texts/1/edit
   def edit
   end
 
-  # POST /texts
-  # POST /texts.json
   def create
     @text = Text.new(text_params)
 
@@ -29,8 +25,6 @@ class TextsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /texts/1
-  # PATCH/PUT /texts/1.json
   def update
     respond_to do |format|
       if @text.update(text_params)
@@ -43,8 +37,6 @@ class TextsController < ApplicationController
     end
   end
 
-  # DELETE /texts/1
-  # DELETE /texts/1.json
   def destroy
     @text.destroy
     respond_to do |format|

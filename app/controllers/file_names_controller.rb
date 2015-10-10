@@ -3,17 +3,13 @@ class FileNamesController < ApplicationController
   before_action :set_file_name, only: [:edit, :update, :destroy]
   before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
 
-  # GET /file_names/new
   def new
     @file_name = FileName.new
   end
 
-  # GET /file_names/1/edit
   def edit
   end
 
-  # POST /file_names
-  # POST /file_names.json
   def create
     @file_name = FileName.new(file_name_params)
 
@@ -29,8 +25,6 @@ class FileNamesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /file_names/1
-  # PATCH/PUT /file_names/1.json
   def update
     respond_to do |format|
       if @file_name.update(file_name_params)
@@ -43,8 +37,6 @@ class FileNamesController < ApplicationController
     end
   end
 
-  # DELETE /file_names/1
-  # DELETE /file_names/1.json
   def destroy
     @file_name.destroy
     respond_to do |format|

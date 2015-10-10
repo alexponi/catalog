@@ -3,17 +3,13 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:edit, :update, :destroy]
   before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
 
-  # GET /tags/new
   def new
     @tag = Tag.new
   end
 
-  # GET /tags/1/edit
   def edit
   end
 
-  # POST /tags
-  # POST /tags.json
   def create
     @tag = Tag.new(tag_params)
 
@@ -29,8 +25,6 @@ class TagsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tags/1
-  # PATCH/PUT /tags/1.json
   def update
     respond_to do |format|
       if @tag.update(tag_params)
@@ -43,8 +37,6 @@ class TagsController < ApplicationController
     end
   end
 
-  # DELETE /tags/1
-  # DELETE /tags/1.json
   def destroy
     @tag.destroy
     respond_to do |format|
