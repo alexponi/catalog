@@ -23,6 +23,8 @@ class ThingsController < ApplicationController
   # GET /things/new
   def new
     @thing = Thing.new
+    # @current_user = current_user
+    # @user_id = @current_user.id
   end
 
   # GET /things/1/edit
@@ -77,6 +79,6 @@ class ThingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thing_params
-      params.require(:thing).permit(:name, :feature, :abbreviation, :description)
+      params.require(:thing).permit(:name, :feature, :abbreviation, :description).merge(user_id: current_user.id)
     end
 end
