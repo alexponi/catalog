@@ -23,7 +23,7 @@
   %b Text:
   - @thing.texts.each do |text|
     %br
-    = text.text
+    %p!= text.text
     %small
       = " | "
       = link_to 'Edit', "/texts/#{text.id}/edit?thing_id=#{@thing.id}"

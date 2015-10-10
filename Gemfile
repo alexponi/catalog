@@ -6,13 +6,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-group :development, :test do
-  gem 'byebug'
-end
-group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro', '>= 1.0.0.rc1'
@@ -23,6 +19,8 @@ gem 'simple_form'
 gem 'thin'
 gem 'upmin-admin'
 group :development do
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
@@ -42,6 +40,7 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
+  gem 'byebug'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails'

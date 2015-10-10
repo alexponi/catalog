@@ -1,7 +1,9 @@
 class TextsController < ApplicationController
+  require 'carrierwave/orm/activerecord'
   before_action :authenticate_user!
   before_action :set_text, only: [:edit, :update, :destroy]
   before_action :set_thing, only: [:new, :create, :edit, :update, :destroy]
+  
 
   def new
     @text = Text.new
