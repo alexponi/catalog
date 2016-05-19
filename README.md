@@ -1,4 +1,4 @@
-Catalog ![catalog logo](ap-catalog.png)
+Catalog ![catalog logo](catalogs_2.png)
 ================
 Sorry, the work is not finished yet.
 
