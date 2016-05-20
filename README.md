@@ -1,4 +1,4 @@
-Catalog ![catalog logo](catalogs_2.png)
+Catalog ![catalog logo](catalogs_3.png)
 ================
 
 This application is a universal catalog.
