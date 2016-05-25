@@ -2,7 +2,7 @@ Catalog ![catalog logo](catalogs_3.png)
 ================
 
 This application is an universal catalog.
-This application I am writing to reduce the time searching for the right things to me. When I say a thing, I mean a piece of software code and tools in the home workshop and favorite music and food in the kitchen.
+I am writing this application to reduce the time searching for the right things to me. When I say a thing, I mean a piece of software code and tools in the home workshop and favorite music and food in the kitchen.
 
 In the initial stage this application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
