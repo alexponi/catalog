@@ -14,6 +14,8 @@ class Thing < ActiveRecord::Base
   has_many :thing_texts
   has_many :texts, :through => :thing_texts
 
+  validates :name, presence: true
+  validates :description, presence: true
 
   def self.search(name, feature, abbreviation)
     if name != "" and feature != "" and abbreviation != ""
