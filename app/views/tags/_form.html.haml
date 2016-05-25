@@ -3,4 +3,4 @@
   .form-inputs
     = f.input :name
   .form-actions
-    = f.button :submit
+    = f.button :submit, data: { disable_with: "Please wait..." }, :class => 'btn btn-primary'

@@ -7,7 +7,7 @@
     = f.input :name
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, data: { disable_with: "Please wait..." }, :class => 'btn btn-primary'
 
 %br
 = link_to 'Back', @thing
