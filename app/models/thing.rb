@@ -1,4 +1,7 @@
+require 'elasticsearch/model'
 class Thing < ActiveRecord::Base
+  include Elasticsearch::Model
+
   has_many :thing_tags
   has_many :tags, through: :thing_tags
 
