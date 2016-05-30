@@ -18,6 +18,8 @@ gem 'mysql2', '~> 0.3.18'
 gem 'simple_form'
 gem 'thin'
 gem 'upmin-admin'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
