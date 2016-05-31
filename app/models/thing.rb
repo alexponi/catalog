@@ -22,23 +22,17 @@ class Thing < ActiveRecord::Base
   validates :description, presence: true
 
   def self.search(name, feature, abbreviation)
-    if name != "" and feature != "" and abbreviation != ""
-      self.where(name: name, feature: feature, abbreviation: abbreviation).to_a
-    elsif name != "" and feature != "" and abbreviation = ""
-      self.where(:name => "#{name}", :feature => "#{feature}").to_a
-    elsif name != "" and feature = "" and abbreviation != ""
-      self.where(:name => "#{name}", :abbreviation => "#{abbreviation}").to_a
-    elsif name = "" and feature != "" and abbreviation != ""
-      self.where(:feature => "#{feature}", :abbreviation => "#{abbreviation}").to_a
-    elsif name != "" and feature = "" and abbreviation = ""
-      self.where(:name => "#{name}").to_a
-    elsif name = "" and feature != "" and abbreviation = ""
-      self.where(:feature => "#{feature}").to_a
-    elsif name = "" and feature = "" and abbreviation != ""
-      self.where(:abbreviation => "#{abbreviation}").to_a
-    else
-      self.all
-    end
+    collection = self.all
+    collection = collection.where(name: name) if name.present?
+    collection = collection.where(feature: feature) if feature.present?
+    collection = collection.where(abbreviation: abbreviation) if abbreviation.present?
+    return collection
+  end
+
+  def as_indexed_json
+    self.as_json({
+      only: [:name, :feature, :abbreviation, :description]
+    })
   end
 
 
