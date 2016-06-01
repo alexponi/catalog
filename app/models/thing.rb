@@ -22,7 +22,37 @@ class Thing < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
 
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :name, analyzer: 'russian'
+      indexes :feature, analyzer: 'russian'
+      indexes :abbreviation, analyzer: 'russian'
+      indexes :description, analyzer: 'russian'
+    end
+  end
+
+  def self.search(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          multi_match: {
+            query: query,
+            fields: ['name^10', 'feature' ,'abbreviation' , 'description']
+          }
+        }
+      }
+    )
+  end
 end
+
+# Delete the previous index in Elasticsearch
+Thing.__elasticsearch__.client.indices.delete index: Thing.index_name rescue nil
+
+# Create the new index with the new mapping
+Thing.__elasticsearch__.client.indices.create \
+  index: Thing.index_name,
+  body: { settings: Thing.settings.to_hash, mappings: Thing.mappings.to_hash }
+
 
 Thing.import
 
