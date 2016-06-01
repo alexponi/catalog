@@ -1,7 +1,8 @@
 require 'elasticsearch/model'
+
 class Thing < ActiveRecord::Base
   include Elasticsearch::Model
-  include Searchable
+  include Elasticsearch::Model::Callbacks
 
   has_many :thing_tags
   has_many :tags, through: :thing_tags
@@ -21,19 +22,7 @@ class Thing < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
 
-  def self.search(name, feature, abbreviation)
-    collection = self.all
-    collection = collection.where(name: name) if name.present?
-    collection = collection.where(feature: feature) if feature.present?
-    collection = collection.where(abbreviation: abbreviation) if abbreviation.present?
-    return collection
-  end
-
-  def as_indexed_json
-    self.as_json({
-      only: [:name, :feature, :abbreviation, :description]
-    })
-  end
-
-
 end
+
+Thing.import
+

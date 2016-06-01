@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :things
   mount Upmin::Engine => '/admin'
   root to: 'home#index'
+  get 'search', to: 'home#index'
   devise_for :users
   resources :users
 end

@@ -1,18 +1,20 @@
 - if user_signed_in?
   %h4 Welcome #{current_user.email}
   %br
-  = form_tag things_path, :method => 'get' do
+
+  %h4 Things Search
+  = form_for search_path, method: :get do |f|
     %p
-    = label_tag :name  
-    = text_field_tag :name
-    = label_tag :feature
-    = text_field_tag :feature
-    = label_tag :abbreviation
-    = text_field_tag :abbreviation
-    = submit_tag "Search", :name => nil
-  %br
-  %br
-  = link_to 'New Thing', new_thing_path
+      = f.label "Search for"
+      = text_field_tag :query, params[:query]
+      = submit_tag "Go", name: nil
+    %ul
+      - @things.each do |thing|
+        %li
+          %h5
+            = link_to thing.name, controller: "things", action: "show", id: thing.id
+    %br
+    = link_to 'New Thing', new_thing_path
 - else
   %h1 Welcome to catalog!
   = image_tag("catalogs_3.png")
