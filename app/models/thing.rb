@@ -24,7 +24,7 @@ class Thing < ActiveRecord::Base
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
-      indexes :name, analyzer: 'russian'
+      indexes :name, analyzer: 'russian', index_options: 'offsets'
       indexes :feature, analyzer: 'russian'
       indexes :abbreviation, analyzer: 'russian'
       indexes :description, analyzer: 'russian'
@@ -38,6 +38,16 @@ class Thing < ActiveRecord::Base
           multi_match: {
             query: query,
             fields: ['name^10', 'feature' ,'abbreviation' , 'description']
+          }
+        },
+        highlight: {
+          pre_tags: ['<em>'],
+          post_tags: ['</em>'],
+          fields: {
+            name: {},
+            feature: {},
+            abbreviation: {},
+            description: {}
           }
         }
       }

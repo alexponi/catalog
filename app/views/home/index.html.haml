@@ -11,8 +11,16 @@
     %ul
       - @things.each do |thing|
         %li
-          %h5
-            = link_to thing.name, controller: "things", action: "show", id: thing.id
+          %h4
+            = link_to thing.try(:highlight).try(:name) ? thing.highlight.name[0].html_safe : thing.name, |
+              controller: "things", |
+              action: "show", |
+              id: thing.id  |
+          - if thing.try(:highlight).try(:description)
+            - thing.highlight.description.each do |snippet|
+              %p
+                = snippet.html_safe
+                \...
     %br
     = link_to 'New Thing', new_thing_path
 - else
