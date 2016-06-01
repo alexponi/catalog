@@ -16,6 +16,16 @@
               controller: "things", |
               action: "show", |
               id: thing.id  |
+          - if thing.try(:highlight).try(:feature)
+            - thing.highlight.feature.each do |snippet|
+              %p
+                = snippet.html_safe
+                \...
+          - if thing.try(:highlight).try(:abbreviation)
+            - thing.highlight.abbreviation.each do |snippet|
+              %p
+                = snippet.html_safe
+                \...
           - if thing.try(:highlight).try(:description)
             - thing.highlight.description.each do |snippet|
               %p
